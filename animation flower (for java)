@@ -1,0 +1,51 @@
+public class FlowerAnimation {
+    public static void main(String[] args) throws InterruptedException {
+        int frames = 10; // Number of frames in the animation
+        int delay = 500; // Delay between frames in milliseconds
+
+        for (int i = 1; i <= frames; i++) {
+            clearScreen();
+            generateFlower(i);
+            Thread.sleep(delay);
+        }
+    }
+
+    public static void generateFlower(int size) {
+        // Top part of the flower
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < (i * 2) + 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+
+        // Middle part of the flower
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(" ");
+            }
+            System.out.println("***");
+        }
+
+        // Bottom part of the flower
+        for (int i = size - 1; i >= 0; i--) {
+            for (int j = 0; j < size - i; j++) {
+                System.out.print(" ");
+            }
+            for (int j = 0; j < (i * 2) + 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    public static void clearScreen() {
+        // Clearing the console screen
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+}
